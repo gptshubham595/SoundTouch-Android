@@ -54,8 +54,12 @@ public class MediaCodecAudioEncoder implements AudioEncoder
 		this.samplingRate = samplingRate;
 		this.channels = channels;
 		samplingRateKey = determineSamplingRateKey(samplingRate);
-		codec = MediaCodec.createByCodecName("OMX.google.aac.encoder");
-		format = new MediaFormat();
+        try {
+            codec = MediaCodec.createByCodecName("OMX.google.aac.encoder");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        format = new MediaFormat();
 		format.setString(MediaFormat.KEY_MIME, "audio/mp4a-latm");
 		format.setInteger(MediaFormat.KEY_AAC_PROFILE,
 				MediaCodecInfo.CodecProfileLevel.AACObjectLC); // AAC LC

@@ -3,18 +3,16 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.12.+'
+        classpath 'com.android.tools.build:gradle:1.0.0'
     }
 }
-apply plugin: 'android-library'
+apply plugin: 'com.android.library'
 
-dependencies {
-    compile fileTree(dir: 'libs', include: '*.jar')
-}
+
 
 android {
-    compileSdkVersion 20
-    buildToolsVersion "21.1.0"
+    compileSdkVersion 21
+    buildToolsVersion "21.1.2"
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
@@ -44,5 +42,9 @@ android {
         // by a similar customization.
         debug.setRoot('build-types/debug')
         release.setRoot('build-types/release')
+    }
+
+    dependencies {
+        compile fileTree(dir: 'libs', include: '*.jar')
     }
 }
